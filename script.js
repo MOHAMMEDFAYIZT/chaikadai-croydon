@@ -10,12 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Restaurant Slideshow
-  const slides = [
-    { img: 'assets/pics/p1.jpg', alt: 'Chai Kadai Interior' },
-    { img: 'assets/pics/p2.jpg', alt: 'Chai Kadai Dining Area' },
-    { img: 'assets/pics/p3.jpg', alt: 'Chai Kadai Counter' },
-    { img: 'assets/pics/p5.jpg', alt: 'Chai Kadai Ambience' }
-  ];
+ const slides = [
+  { img: 'assets/pics/p1.jpg', alt: 'Chai Kadai Interior' },
+  { img: 'assets/pics/p2.jpg', alt: 'Chai Kadai Dining Area' },
+  { img: 'assets/pics/p3.jpg', alt: 'Chai Kadai Counter' },
+  { img: 'assets/pics/p4.jpg', alt: 'Chai Kadai Food Preparation' },
+  { img: 'assets/pics/p5.jpg', alt: 'Chai Kadai Ambience' },
+  { img: 'assets/pics/p6.jpg', alt: 'Chai Kadai Special Dishes' },
+  { img: 'assets/pics/p7.jpg', alt: 'Chai Kadai Desserts' }
+];
 
   const carouselInner = document.querySelector('#restaurantSlideshow .carousel-inner');
   slides.forEach((slide, index) => {
