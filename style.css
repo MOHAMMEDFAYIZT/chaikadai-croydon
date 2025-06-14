@@ -1,15 +1,14 @@
 :root {
-  --primary: #8B5A2B;    /* Elegant brown */
+  --primary: #8B5A2B;
   --primary-light: #A67C52;
-  --secondary: #D4AF37;  /* Gold */
-  --orange: #c86b1d;     /* Dark orange */
-  --light: #F8F5F2;     /* Cream */
+  --secondary: #D4AF37;
+  --orange: #E67E22;
+  --light: #F8F5F2;
   --light-gray: #E8E8E8;
   --dark: #333;
   --darker: #222;
 }
 
-/* Premium Fonts */
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--dark);
@@ -22,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
-/* ----- Header ----- */
+/* Header - Preserved White */
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
               url('../assets/dinner/d1.jpg') center/cover no-repeat !important;
@@ -42,7 +41,7 @@ header h1 {
   letter-spacing: 2px;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-  color: #fff;
+  color: #fff !important;
 }
 
 header p {
@@ -50,34 +49,15 @@ header p {
   max-width: 700px;
   margin: 0 auto 2rem;
   font-weight: 300;
-  color: #fff;
+  color: #fff !important;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Welcome Section */
-.welcome {
-  background-color: white;
-  padding: 80px 0;
-}
-
-.welcome-text {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.welcome-slogan {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--primary);
-}
-
-/* ----- Navigation ----- */
+/* Navbar - Skin Color */
 .navbar {
   padding: 20px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: #F5E7D9 !important;
 }
 
 .navbar-brand {
@@ -132,30 +112,38 @@ header p {
   color: var(--primary);
 }
 
-/* ----- Slideshow ----- */
+/* Updated Carousel Styles */
 .carousel {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  height: 500px;
+  max-height: 500px; /* Set maximum height */
 }
 
 .carousel-inner {
-  height: 100%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .carousel-item {
-  height: 100%;
-  text-align: center;
-  background-color: #f5f5f5;
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
 }
 
 .carousel-item img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Changed from cover to contain */
+  max-height: 500px;
   margin: 0 auto;
+  display: block;
 }
 
 .carousel-control-prev, 
@@ -171,9 +159,56 @@ header p {
 
 .carousel-control-prev:hover, 
 .carousel-control-next:hover {
-  background-color: #e07a1c;
+  background-color: #d4691a;
 }
 
+/* Welcome Section */
+.welcome {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.welcome-slogan {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--primary);
+}
+/* Updated Reviews Section */
+.reviews .carousel-item {
+  padding: 40px 10%;
+  text-align: center;
+}
+
+.review-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .reviews .carousel-item {
+    padding: 60px 15%;
+  }
+  .review-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews .carousel-item {
+    padding: 30px 5%;
+  }
+  .review-text {
+    font-size: 1rem;
+  }
+}
 /* Menu Categories */
 .menu-categories {
   background-color: white;
@@ -196,7 +231,7 @@ header p {
   position: absolute;
   width: 50px;
   height: 2px;
-  background-color: var(--secondary);
+  background-color: var(--orange);
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
@@ -220,7 +255,7 @@ header p {
   position: absolute;
   width: 80px;
   height: 2px;
-  background-color: var(--secondary);
+  background-color: var(--orange);
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -242,6 +277,7 @@ header p {
 
 .menu-categories .card-img-top {
   height: 250px;
+  width: 100%;
   object-fit: cover;
   transition: all 0.5s;
 }
@@ -261,6 +297,7 @@ header p {
 
 .gallery .card-img-top {
   height: 250px;
+  width: 100%;
   object-fit: cover;
   transition: all 0.5s;
 }
@@ -294,7 +331,7 @@ header p {
   font-size: 1.3rem;
 }
 
-/* ----- Contact Section ----- */
+/* Contact Section */
 .contact {
   background-color: var(--darker);
   color: white;
@@ -325,29 +362,9 @@ header p {
   position: absolute;
   width: 40px;
   height: 2px;
-  background-color: var(--secondary);
+  background-color: var(--orange);
   bottom: 0;
   left: 0;
-}
-
-.footer-links, .footer-hours {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li, .footer-hours li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #aaa;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.footer-links a:hover {
-  color: white;
-  padding-left: 5px;
 }
 
 .footer-contact, .footer-hours {
@@ -364,7 +381,7 @@ header p {
 
 .footer-contact i {
   margin-right: 10px;
-  color: var(--secondary);
+  color: var(--orange);
   width: 20px;
   text-align: center;
 }
@@ -383,7 +400,7 @@ header p {
 }
 
 .social-links a:hover {
-  background-color: var(--secondary);
+  background-color: var(--orange);
   transform: translateY(-3px);
 }
 
@@ -420,11 +437,8 @@ header p {
     font-size: 2.2rem;
   }
   
-  .carousel {
-    height: 400px;
-  }
-  
-  .menu-categories .card-img-top {
+  .menu-categories .card-img-top,
+  .gallery .card-img-top {
     height: 200px;
   }
 }
@@ -442,10 +456,6 @@ header p {
   
   header h1 {
     font-size: 2.5rem;
-  }
-  
-  .carousel {
-    height: 300px;
   }
 
   .reviews .carousel-item {

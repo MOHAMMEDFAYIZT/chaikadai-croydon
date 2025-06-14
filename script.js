@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Restaurant Slideshow - only p1, p2, p3, p5
+  // Restaurant Slideshow
   const slides = [
     { img: 'assets/pics/p1.jpg', alt: 'Chai Kadai Interior' },
     { img: 'assets/pics/p2.jpg', alt: 'Chai Kadai Dining Area' },
@@ -22,33 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const item = document.createElement('div');
     item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
     item.innerHTML = `
-      <div class="d-flex justify-content-center align-items-center" style="height: 500px; background-color: #f5f5f5;">
-        <img src="${slide.img}" class="d-block" alt="${slide.alt}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
-      </div>
+      <img src="${slide.img}" class="d-block w-100" alt="${slide.alt}" loading="lazy">
     `;
     carouselInner.appendChild(item);
   });
 
-  // Drinks Menu
+  // Menu Items
   const drinksItems = [
     { img: 'assets/drinks/d1.jpg', title: 'Refreshing Drink 1' },
     { img: 'assets/drinks/d2.jpg', title: 'Refreshing Drink 2' },
     { img: 'assets/drinks/d3.jpg', title: 'Refreshing Drink 3' }
   ];
 
-  const drinksContainer = document.getElementById('drinksItems');
-  drinksItems.forEach(item => {
-    const col = document.createElement('div');
-    col.className = 'col-md-4 mb-4';
-    col.innerHTML = `
-      <div class="card h-100">
-        <img src="${item.img}" class="card-img-top" alt="${item.title}">
-      </div>
-    `;
-    drinksContainer.appendChild(col);
-  });
-
-  // Lunch Menu
   const lunchItems = [
     { img: 'assets/lunch/l1.jpg', title: 'Lunch Special 1' },
     { img: 'assets/lunch/l2.jpg', title: 'Lunch Special 2' },
@@ -57,19 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { img: 'assets/lunch/l5.jpg', title: 'Lunch Special 5' }
   ];
 
-  const lunchContainer = document.getElementById('lunchItems');
-  lunchItems.forEach(item => {
-    const col = document.createElement('div');
-    col.className = 'col-md-4 col-lg-3 mb-4';
-    col.innerHTML = `
-      <div class="card h-100">
-        <img src="${item.img}" class="card-img-top" alt="${item.title}">
-      </div>
-    `;
-    lunchContainer.appendChild(col);
-  });
-
-  // Dinner Menu
   const dinnerItems = [
     { img: 'assets/dinner/d1.jpg', title: 'Dinner Special 1' },
     { img: 'assets/dinner/d2.jpg', title: 'Dinner Special 2' },
@@ -77,18 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { img: 'assets/dinner/d4.jpg', title: 'Dinner Special 4' },
     { img: 'assets/dinner/d5.jpg', title: 'Dinner Special 5' }
   ];
-
-  const dinnerContainer = document.getElementById('dinnerItems');
-  dinnerItems.forEach(item => {
-    const col = document.createElement('div');
-    col.className = 'col-md-4 col-lg-3 mb-4';
-    col.innerHTML = `
-      <div class="card h-100">
-        <img src="${item.img}" class="card-img-top" alt="${item.title}">
-      </div>
-    `;
-    dinnerContainer.appendChild(col);
-  });
 
   // Gallery Items
   const galleryItems = [
@@ -99,18 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     { img: 'assets/gallery/g5.jpg', title: 'Gallery Item 5' },
     { img: 'assets/gallery/g6.jpg', title: 'Gallery Item 6' }
   ];
-
-  const galleryContainer = document.getElementById('galleryItems');
-  galleryItems.forEach(item => {
-    const col = document.createElement('div');
-    col.className = 'col-md-4 mb-4';
-    col.innerHTML = `
-      <div class="card h-100">
-        <img src="${item.img}" class="card-img-top" alt="${item.title}">
-      </div>
-    `;
-    galleryContainer.appendChild(col);
-  });
 
   // Customer Reviews
   const reviews = [
@@ -128,6 +76,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
+  // Helper function to load items
+  const loadItems = (containerId, items, cols) => {
+    const container = document.getElementById(containerId);
+    items.forEach(item => {
+      const col = document.createElement('div');
+      col.className = cols;
+      col.innerHTML = `
+        <div class="card h-100">
+          <img src="${item.img}" class="card-img-top" alt="${item.title}" loading="lazy">
+        </div>
+      `;
+      container.appendChild(col);
+    });
+  };
+
+  // Load all items
+  loadItems('drinksItems', drinksItems, 'col-md-4 mb-4');
+  loadItems('lunchItems', lunchItems, 'col-md-4 col-lg-3 mb-4');
+  loadItems('dinnerItems', dinnerItems, 'col-md-4 col-lg-3 mb-4');
+  loadItems('galleryItems', galleryItems, 'col-md-4 mb-4');
+
+  // Load reviews
   const reviewContainer = document.querySelector('#reviewCarousel .carousel-inner');
   reviews.forEach((review, index) => {
     const item = document.createElement('div');
